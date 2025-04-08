@@ -296,12 +296,8 @@
             </div>
             <form id="passwordForm">
                 <div class="form-group">
-                    <label for="siteName">Website/App Name</label>
-                    <input type="text" id="siteName" required>
-                </div>
-                <div class="form-group">
-                    <label for="siteUrl">Website URL (optional)</label>
-                    <input type="url" id="siteUrl">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email/Username</label>
@@ -354,7 +350,7 @@
                 card.className = 'password-card';
                 card.innerHTML = `
                     <div class="password-header">
-                        <h3>${pass.siteName}</h3>
+                        <h3>${pass.name}</h3>
                         <div class="password-actions">
                             <button class="action-btn edit-btn" data-index="${index}">
                                 <i class="fas fa-edit"></i>
@@ -365,10 +361,6 @@
                         </div>
                     </div>
                     <div class="password-details">
-                        <div>
-                            <i class="fas fa-globe"></i>
-                            <span>${pass.siteUrl || 'No URL provided'}</span>
-                        </div>
                         <div>
                             <i class="fas fa-user"></i>
                             <span>${pass.email}</span>
@@ -465,8 +457,7 @@
         // Edit password
         function editPassword(index) {
             const pass = passwords[index];
-            document.getElementById('siteName').value = pass.siteName;
-            document.getElementById('siteUrl').value = pass.siteUrl || '';
+            document.getElementById('name').value = pass.name;
             document.getElementById('email').value = pass.email;
             document.getElementById('password').value = pass.password;
             document.getElementById('notes').value = pass.notes || '';
@@ -495,8 +486,7 @@
             e.preventDefault();
             
             const passwordData = {
-                siteName: document.getElementById('siteName').value,
-                siteUrl: document.getElementById('siteUrl').value,
+                name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 password: document.getElementById('password').value,
                 notes: document.getElementById('notes').value
@@ -521,7 +511,7 @@
         searchInput.addEventListener('input', () => {
             const searchTerm = searchInput.value.toLowerCase();
             const filtered = passwords.filter(pass => 
-                pass.siteName.toLowerCase().includes(searchTerm) || 
+                pass.name.toLowerCase().includes(searchTerm) || 
                 pass.email.toLowerCase().includes(searchTerm) ||
                 (pass.notes && pass.notes.toLowerCase().includes(searchTerm))
             );
