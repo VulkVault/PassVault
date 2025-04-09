@@ -47,19 +47,23 @@
             border-bottom: 1px solid #e0e0e0;
         }
 
-        .logo {
+        .logo-container {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
 
-        .logo i {
-            color: var(--primary);
-            font-size: 1.8rem;
+        .logo {
+            width: 40px;
+            height: 40px;
         }
 
-        .logo h1 {
+        .logo-text {
             font-weight: 600;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .btn {
@@ -80,6 +84,7 @@
             transform: translateY(-2px);
         }
 
+        /* Rest of your existing CSS remains the same */
         .search-bar {
             margin-bottom: 20px;
             position: relative;
@@ -268,9 +273,9 @@
 <body>
     <div class="container">
         <header>
-            <div class="logo">
-                <i class="fas fa-lock"></i>
-                <h1>Vulk Vault</h1>
+            <div class="logo-container">
+                <img src="vulk-vault-logo.png" alt="Vulk Vault Logo" class="logo">
+                <span class="logo-text">Vulk Vault</span>
             </div>
             <button class="btn" id="addPasswordBtn">
                 <i class="fas fa-plus"></i> Add Password
